@@ -100,7 +100,3 @@ Create Table voluntarios_A
 ON voluntarios
 Go
 
-
-
-uSE master
-DROP database ACNUR
