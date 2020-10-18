@@ -16,7 +16,7 @@ Create Table socios
 	--PK
 	Constraint PK_voluntarios Primary key Clustered(socio_id),
 	--FK
-	Constraint FK_socios_cuota Foreign Key(tipo_cuota_fk) References tipo_cuota(couta_id),
-	Constraint FK_socios_sede Foreign Key(sede_fk) References sede(sede_id)
+	Constraint FK_socios_cuota Foreign Key(tipo_cuota_fk) References tipo_cuotas(couta_id),
+	Constraint FK_socios_sede Foreign Key(sede_fk) References sedes(sede_id)
 )
 Go
