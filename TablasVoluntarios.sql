@@ -74,8 +74,6 @@ Create Table voluntarios_H
 	voluntarioH_id int Identity (1,1),
 	profesion Varchar(25) unique not null,
 	disponibilidad bit not null,
-	apellido1 Varchar(25) not null,
-	apellido2 Varchar(25) not null,
 	cantidad_de_trabajos int not null,
 	voluntario_fk int not null,
 	--Constraints
