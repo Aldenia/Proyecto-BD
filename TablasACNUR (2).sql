@@ -89,7 +89,6 @@ Create table envio_sede(
 	idEnvio_Sede integer identity not null,
 	idEnvio int not null,
 	idSede int not null,
-	idDescripcion int not null,
 	constraint PK_id PRIMARY KEY(idEnvio_Sede),
 	constraint FK_envioSede_envio FOREIGN KEY(idEnvio) REFERENCES envio(idEnvio) ON DELETE CASCADE,
 	CONSTRAINT FK_envio_sede_sede FOREIGN KEY(idSede) REFERENCES sedes(sede_id)
