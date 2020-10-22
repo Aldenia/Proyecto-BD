@@ -23,7 +23,7 @@ GO
 /*PRIMERA TABLA*/
 use ACNUR 
 go
-Create table envios(
+Create table envio(
 	idEnvio integer identity not null,
 	destino varchar(100) not null,
 	fecha_env date not null,
@@ -44,8 +44,8 @@ Create table detalle(
 	tipo_envio int not null,
 	unidad_fk int not null,
 	constraint PK_idTipo_Unidad PRIMARY KEY(idDetalle),
-	constraint fk_tipo_envio foreign key (tipo_envio) references tipo_envio(tipo_id),
-	constraint fk_unidad foreign key (unidad_fk) references tipo_unidad(unidad_id)
+	constraint fk_tipo_envio foreign key (tipo_envio) references tipo_envio(tipo_id)ON DELETE CASCADE,
+	constraint fk_unidad foreign key (unidad_fk) references tipo_unidad(unidad_id)ON DELETE CASCADE
 )
 ON Envios
 go
@@ -58,9 +58,9 @@ Create table ayuda_material(
 	idAyudaMaterial integer identity not null,
 	idEnvio integer not null,
 	idDetalle int not null,
-	constraint FK_envio_material_envio FOREIGN KEY(idEnvio) REFERENCES envios(idEnvio),
-	constraint FK_detalle_material_envio FOREIGN KEY(idDetalle) REFERENCES detalle(idDetalle),
-	constraint PK_idAyudaMaterial PRIMARY KEY(IdAyudaMaterial)
+	constraint PK_idAyudaMaterial PRIMARY KEY(IdAyudaMaterial),
+	constraint FK_envio_material_envio FOREIGN KEY(idEnvio) REFERENCES envio(idEnvio)ON DELETE CASCADE,
+	constraint FK_detalle_material_envio FOREIGN KEY(idDetalle) REFERENCES detalle(idDetalle)ON DELETE CASCADE
 )
 ON Envios
 go
@@ -76,7 +76,7 @@ Create table envio_voluntario(
 	idEnvio int null,
 	constraint idEnv_Voluntatio PRIMARY KEY(idEnv_Voluntatio),
 	constraint idVoluntario FOREIGN KEY(idVoluntario) REFERENCES voluntarios(voluntario_id),
-	constraint idEnvio FOREIGN KEY(idEnvio) REFERENCES envios(idEnvio)
+	constraint idEnvio FOREIGN KEY(idEnvio) REFERENCES envio(idEnvio) ON DELETE CASCADE
 )
 ON Envios
 go
@@ -91,7 +91,7 @@ Create table envio_sede(
 	idSede int not null,
 	idDescripcion int not null,
 	constraint PK_id PRIMARY KEY(idEnvio_Sede),
-	constraint FK_envioSede_envio FOREIGN KEY(idEnvio) REFERENCES envios(idEnvio),
+	constraint FK_envioSede_envio FOREIGN KEY(idEnvio) REFERENCES envios(idEnvio) ON DELETE CASCADE,
 	CONSTRAINT FK_envio_sede_sede FOREIGN KEY(idSede) REFERENCES sedes(sede_id)
 )
 ON Envios
