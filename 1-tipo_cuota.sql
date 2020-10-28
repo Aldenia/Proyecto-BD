@@ -9,5 +9,5 @@ Create Table tipo_cuotas
 	--Constraints
 	--PK
 	Constraint PK_tipo_cuotas Primary Key Clustered(cuota_id)
-)
+) on [MAIN_DATA_FILEGROUP]
 Go
