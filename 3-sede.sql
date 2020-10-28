@@ -13,4 +13,5 @@ Create Table sedes
 	--PK
 	Constraint PK_sedes Primary key Clustered(sede_id)
 ) on MAIN_DATA_FILEGROUP
+
 Go
