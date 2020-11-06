@@ -8,7 +8,7 @@ Create Table socios
 	apellido2 Varchar(25) not null,
 	direccion Varchar(200) not null,
 	fecha_pago Date not null,
-	cuanta_bancaria Int not null,
+	cuanta_bancaria Varchar(20) not null,
 	tipo_cuota_fk Int not null,
 	sede_fk Int not null,
 	--Constraints

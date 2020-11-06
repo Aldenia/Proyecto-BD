@@ -1,12 +1,16 @@
 Use ACNUR
 Go
+
 --Insertar en tabla socios
 Create Procedure insertar_socio @nombre Varchar(25), @apellido1 Varchar(25), @apellido2 Varchar(25), 
-								@direccion Varchar(200), @fecha_pago Date, @cuanta_bancaria Int,
+								@direccion Varchar(200), @fecha_pago Date, @cuanta_bancaria Varchar(20),
 								@tipo_cuota_fk Int, @sede_fk Int
 As
 	Insert Into socios (nombre, apellido1, apellido2, direccion, fecha_pago, cuanta_bancaria, tipo_cuota_fk, sede_fk)
 	Values (@nombre, @apellido1, @apellido2, @direccion, @fecha_pago, @cuanta_bancaria, @tipo_cuota_fk,@sede_fk)
+Go
+
+Execute insertar_socio 'Luis Enrique', 'Mora', 'Mendoza', 'Nicoya, Guanacaste, 300m norte del Empino barrio Los Ángles', '2020-10-20', '200-02-179-004140-8','1','1'
 Go
 
 --listar los socios existentes
