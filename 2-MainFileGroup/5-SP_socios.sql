@@ -65,3 +65,20 @@ As
 
 Go
 
+--Actualizar socio
+Create Procedure actualizar_socio @socio_id Int, @nombre Varchar(25), @apellido1 Varchar(25), @apellido2 Varchar(25), 
+								@direccion Varchar(200), @fecha_pago Date, @cuanta_bancaria Int,
+								@tipo_cuota_fk Int, @sede_fk Int
+As
+	Update socios 
+	set 
+	nombre = @nombre,
+	apellido1 = @apellido1, 
+	apellido2 = @apellido2, 
+	direccion = @direccion, 
+	fecha_pago = @fecha_pago, 
+	cuanta_bancaria =  @cuanta_bancaria, 
+	tipo_cuota_fk = @tipo_cuota_fk, 
+	sede_fk = @sede_fk
+	Where socio_id =  @socio_id
+Go

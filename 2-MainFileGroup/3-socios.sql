@@ -1,6 +1,5 @@
 Use ACNUR
 Go
-
 Create Table socios
 (
 	socio_id Int Identity(1,1) not null,
@@ -18,5 +17,5 @@ Create Table socios
 	--FK
 	Constraint FK_socios_cuota Foreign Key(tipo_cuota_fk) References tipo_cuotas(cuota_id),
 	Constraint FK_socios_sede Foreign Key(sede_fk) References sedes(sede_id)
-) on MAIN_DATA_FILEGROUP
+) on HEAD_DATA_FILEGROUP
 Go

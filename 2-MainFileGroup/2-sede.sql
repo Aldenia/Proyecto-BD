@@ -1,6 +1,5 @@
 Use ACNUR
 Go
-
 Create Table sedes
 (
 	sede_id int Identity(1,1) not null,
@@ -14,6 +13,6 @@ Create Table sedes
 	Constraint PK_sedes Primary key Clustered(sede_id)
 	--FK
 
-) on MAIN_DATA_FILEGROUP
+) on [HEAD_DATA_FILEGROUP]
 
 Go

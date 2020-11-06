@@ -1,6 +1,5 @@
 Use ACNUR
 Go
-
 Create Table tipo_cuotas
 (
 	cuota_id Int Identity(1,1) not null,
@@ -9,5 +8,5 @@ Create Table tipo_cuotas
 	--Constraints
 	--PK
 	Constraint PK_tipo_cuotas Primary Key Clustered(cuota_id)
-) on [MAIN_DATA_FILEGROUP]
+) on HEAD_DATA_FILEGROUP
 Go
