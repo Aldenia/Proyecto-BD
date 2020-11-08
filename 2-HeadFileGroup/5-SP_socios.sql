@@ -10,7 +10,7 @@ As
 	Values (@nombre, @apellido1, @apellido2, @direccion, @fecha_pago, @cuanta_bancaria, @tipo_cuota_fk,@sede_fk)
 Go
 
-Execute insertar_socio 'Luis Enrique', 'Mora', 'Mendoza', 'Nicoya, Guanacaste, 300m norte del Empino barrio Los Ángles', '2020-10-20', '200-02-179-004140-8','1','1'
+Execute insertar_socio 'Carlos Antonio', 'Rodríguez', 'Herrera', 'Liberia, Guanacaste, 300m norte de la escuela', '2020-10-20', '200-02-179-005140-9','3','3'
 Go
 
 --listar los socios existentes
