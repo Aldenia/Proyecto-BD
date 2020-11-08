@@ -36,17 +36,6 @@ TO FILEGROUP voluntarios
 GO
 
 --Creacion de las tablas
-Use ACNUR
-Create Table tipo_voluntarios
-(
-	tipo_vol_id int Identity (1,1),
-	tipo int not null,
-	--Constraints
-	--PK
-	Constraint PK_tipo_vol Primary Key Clustered (tipo_vol_id)
-)
-ON voluntarios
-Go
 
 Use ACNUR
 Go
@@ -58,13 +47,11 @@ Create Table voluntarios
 	apellido1 Varchar(25) not null,
 	apellido2 Varchar(25) not null,
 	sede_fk int not null,
-	tipo_vol_fk int not null,
 	--Constraints
 	--PK
 	Constraint PK_voluntarios Primary Key Clustered (voluntario_id),
-	--FK
-	Constraint FK_tipo_voluntarios Foreign Key (tipo_vol_fk) references tipo_voluntarios (tipo_vol_id)
 	
+	Constraint FK_sedes Foreign Key (sede_fk) references sedes (sede_id)
 )
 ON voluntarios
 Go
@@ -72,7 +59,7 @@ Go
 Create Table voluntarios_H
 (
 	voluntarioH_id int Identity (1,1),
-	profesion Varchar(25) unique not null,
+	profesion Varchar(25) not null,
 	disponibilidad bit not null,
 	cantidad_de_trabajos int not null,
 	voluntario_fk int not null,

@@ -1,0 +1,23 @@
+USE MASTER
+GO
+CREATE DATABASE ACNUR
+ON PRIMARY 
+(
+	NAME='ACNUR_Data',
+	FILENAME='/var/opt/mssql/data/ACNUR_Data.Mdf',
+	SIZE = 5120mb,
+	MAXSIZE = 15240mb,
+	FILEGROWTH = 512mb
+)
+
+LOG ON
+(
+	NAME='ACNUR_Log',
+	FILENAME='/var/opt/mssql/log/ACNUR_Log.Ldf',
+	SIZE=1024mb,
+	MAXSIZE=2120mb,
+	FILEGROWTH=250mb
+)
+Go
+
+
