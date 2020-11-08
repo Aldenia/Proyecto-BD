@@ -23,7 +23,7 @@ GO
 /*PRIMERA TABLA*/
 use ACNUR 
 go
-Create table envio(
+Create table envios(
 	idEnvio integer identity not null,
 	destino varchar(100) not null,
 	fecha_env date not null,
@@ -32,88 +32,88 @@ Create table envio(
 ON Envios
 go
 
-
-
-/*TERCERA TABLA*/
-use ACNUR 
-go
-Create table detalle(
-	idDetalle integer identity not null,
-	detalle varchar(100) not null,
-	cantidad float,
-	tipo_envio int not null,
-	unidad_fk int not null,
-	constraint PK_idTipo_Unidad PRIMARY KEY(idDetalle),
-	constraint fk_tipo_envio foreign key (tipo_envio) references tipo_envio(tipo_id)ON DELETE CASCADE,
-	constraint fk_unidad foreign key (unidad_fk) references tipo_unidad(unidad_id)ON DELETE CASCADE
-)
-ON Envios
-go
-
-
-/*CUARTA TABLA*/
-use ACNUR
-go
-Create table ayuda_material(
-	idAyudaMaterial integer identity not null,
-	idEnvio integer not null,
-	idDetalle int not null,
-	constraint PK_idAyudaMaterial PRIMARY KEY(IdAyudaMaterial),
-	constraint FK_envio_material_envio FOREIGN KEY(idEnvio) REFERENCES envio(idEnvio)ON DELETE CASCADE,
-	constraint FK_detalle_material_envio FOREIGN KEY(idDetalle) REFERENCES detalle(idDetalle)ON DELETE CASCADE
-)
-ON Envios
-go
-
-
-
 /*SEXTA*/
 use ACNUR 
 go
-Create table envio_voluntario(
+Create table envio_voluntarios(
 	idEnv_Voluntatio integer identity not null,
 	idVoluntario int not null,
-	idEnvio int null,
+	idEnvio int not null,
 	constraint idEnv_Voluntatio PRIMARY KEY(idEnv_Voluntatio),
 	constraint idVoluntario FOREIGN KEY(idVoluntario) REFERENCES voluntarios(voluntario_id),
-	constraint idEnvio FOREIGN KEY(idEnvio) REFERENCES envio(idEnvio) ON DELETE CASCADE
+	constraint idEnvio FOREIGN KEY(idEnvio) REFERENCES envios(idEnvio) ON DELETE CASCADE
 )
 ON Envios
 go
 
-
-
 use ACNUR  
 go
-Create table envio_sede(
+Create table envio_sedes(
 	idEnvio_Sede integer identity not null,
 	idEnvio int not null,
 	idSede int not null,
 	constraint PK_id PRIMARY KEY(idEnvio_Sede),
-	constraint FK_envioSede_envio FOREIGN KEY(idEnvio) REFERENCES envio(idEnvio) ON DELETE CASCADE,
+	constraint FK_envioSede_envio FOREIGN KEY(idEnvio) REFERENCES envios(idEnvio) ON DELETE CASCADE,
 	CONSTRAINT FK_envio_sede_sede FOREIGN KEY(idSede) REFERENCES sedes(sede_id)
 )
 ON Envios
 go
 
 
+/*TERCERA TABLA*/
+use ACNUR 
+go
+Create table producto_envios(
+	idProducto_ayuda integer identity not null,
+	cantidad integer,
+	producto_fk int not null,
+	envio_fk int not null,
+	constraint PK_idTipo_Unidad PRIMARY KEY(idProducto_ayuda),
+	constraint producto_fk foreign key (producto_fk) references productos(idProducto)ON DELETE CASCADE,
+	constraint envio_fk foreign key (envio_fk) references envios(idEnvio)ON DELETE CASCADE
+)
+ON Envios
+go
+
+
+use acnur
+go
+create table productos(
+	idProducto integer identity not null,
+	descripcion varchar(50),
+	tipoEnv_fk integer  not null,
+	constraint PK_idProducto primary key (idProducto),
+	constraint tipoEnv_fk foreign key (tipoEnv_fk) references tipo_envios(idTipoEnv)
+)
+on Envios
+go
+
+
+
+
+
+
 
 use acnur 
 go
-create table tipo_envio(
-	tipo_id int identity not null,
-	descripcion varchar(25) not null,
-	constraint pk_tipo_envio primary key (tipo_id)
+create table tipo_envios(
+	idTipoEnv int identity not null,
+	descripcion varchar(30) not null,
+	constraint pk_tipo_envio primary key (idTipoEnv)
 )
 on envios
 go
 
-use acnur 
-go
-create table tipo_unidad(
-	unidad_id int identity not null,
-	descripcion varchar(25) not null,
-	constraint pk_unidad primary key (unidad_id)
-)
-on envios
-go
+ 
+
+
+ --SP LISTAR
+
+ --SP CONSULTAR
+
+ --SP AGREGAR
+
+ --SP ACTUALIZAR 
+
+ --SP ELIMINAR
+
