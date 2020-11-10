@@ -184,11 +184,6 @@ USE ACNUR
 GO
 CREATE VIEW View_voluntario_H
 AS
-	Select
-		profesion,
-		ca
-		voluntario_fk
-	From	
-		voluntarios_Humanitarios
+	Select * From voluntarios_Humanitarios
 
 GO
