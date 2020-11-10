@@ -1,6 +1,12 @@
 Use ACNUR
 go
 
+--Listar las cuotas que están el la tabla tipo_cuotas
+Create procedure SP_listar_cuotas
+	As
+		select * from tipo_cuotas
+	Go
+
 --Store procedure encaragado de insertar nuevos registros en la tabla tipo_cuotas
 Create Procedure insertar_tipo_cuota @tipo Varchar(25), @cantidad int
 	As
@@ -29,3 +35,11 @@ Create Procedure eliminar_tipo_cuota @cuota_id int
 	As
 		Delete From tipo_cuotas Where cuota_id = @cuota_id
 	Go
+
+--Stored procedure para eliminar cuotA
+Create Procedure eliminar_cuota @cuota_id int
+	As
+		Delete From tipo_cuotas
+		Where cuota_id = @cuota_id
+	Go
+

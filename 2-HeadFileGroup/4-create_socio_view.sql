@@ -21,3 +21,5 @@ As
 		nombre_sede
 	From sedes
 Go
+
+execute SP_lista
