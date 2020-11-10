@@ -40,8 +40,8 @@ Create table envio_voluntarios(
 	voluntario_fk int not null,
 	envio_fk int not null,
 	constraint idEnv_Voluntatio PRIMARY KEY(idEnv_Voluntario),
-	constraint voluntario_fk FOREIGN KEY(voluntario_fk) REFERENCES [Anthony].[voluntarios](voluntario_id),
-	constraint envio_fk FOREIGN KEY(envio_fk) REFERENCES [Rebeca].[envios](idEnvio) ON DELETE CASCADE
+	constraint voluntario_fk FOREIGN KEY(voluntario_fk) REFERENCES voluntarios(voluntario_id),
+	constraint envio_fk FOREIGN KEY(envio_fk) REFERENCES envios(idEnvio) ON DELETE CASCADE
 )
 ON Envios
 go
