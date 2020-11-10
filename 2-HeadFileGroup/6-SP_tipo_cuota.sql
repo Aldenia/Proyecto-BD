@@ -35,3 +35,11 @@ Create Procedure eliminar_tipo_cuota @cuota_id int
 	As
 		Delete From tipo_cuotas Where cuota_id = @cuota_id
 	Go
+
+--Stored procedure para eliminar cuotA
+Create Procedure eliminar_cuota @cuota_id int
+	As
+		Delete From tipo_cuotas
+		Where cuota_id = @cuota_id
+	Go
+
