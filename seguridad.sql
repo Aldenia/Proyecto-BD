@@ -100,14 +100,14 @@ for delete
 as
 	begin
 		insert into seguridad_envio_voluntarios(idEnv_Voluntario,voluntario_fk,envio_fk,Fecha,Usuario,Detalle)
-		select idEnv_Voluntario,voluntario_fk,envio_fk,getdate(),SYSTEM_USER,'DATO INSERTADO EN LA TABLA TPO DE ENVIO_SEDE'
+		select idEnv_Voluntario,voluntario_fk,envio_fk,getdate(),SYSTEM_USER,'DATO ELIMINADO EN LA TABLA TPO DE ENVIO_SEDE'
 		from deleted
 	end
 go
 
 use acnur
 go
-create trigger tr_editar_envio_voluntario
+create trigger tr_editar_envio_voluntarios
 on envio_voluntarios
 for update
 as
@@ -154,14 +154,14 @@ go
 
 use acnur 
 go
-create trigger tr_eliminar_envio_sedes
+create trigger tr_eliminar_envio_sede
 on envio_sedes
 for delete
 as
 	begin
 		set nocount on;
 		insert into seguridad_envio_sedes(idEnvio_Sede,idEnvio,idSede,Fecha,Usuario,Detalle)
-		select idEnvio_Sede,idEnvio,idSede,GETDATE(),SYSTEM_USER,'DATO INSERTADO EN LA TABLA ENVIOS SEDES'
+		select idEnvio_Sede,idEnvio,idSede,GETDATE(),SYSTEM_USER,'DATO ELIMINADO EN LA TABLA ENVIOS SEDES'
 		from deleted
 	end
 go
@@ -204,7 +204,7 @@ as
 	begin
 		SET NOCOUNT ON; 
 		insert into seguridad_producto_envios(idProducto_ayuda,cantidad,producto_fk,envio_fk,Fecha,Usuario,Detalle)
-		select idProducto_ayuda,cantidad,producto_fk,envio_fk,GETDATE(),SYSTEM_USER,'DATO INSERTADO EN LA TABLA PRODUCTOS ENVIO'
+		select idProducto_ayuda,cantidad,producto_fk,envio_fk,GETDATE(),SYSTEM_USER,'DATO ELIMINADO EN LA TABLA PRODUCTOS ENVIO'
 		FROM deleted
 	end
 go
@@ -225,7 +225,7 @@ as
 			on P.idProducto_ayuda = Prod.idProducto_ayuda
 			set nocount on;
 			insert into seguridad_producto_envios(idProducto_ayuda,cantidad,producto_fk,envio_fk,Fecha,Usuario,Detalle)
-			select idProducto_ayuda,cantidad,producto_fk,envio_fk,GETDATE(),SYSTEM_USER,'DATO INSERTADO EN LA TABLA PRODUCTOS ENVIO'
+			select idProducto_ayuda,cantidad,producto_fk,envio_fk,GETDATE(),SYSTEM_USER,'DATO EDITADO EN LA TABLA PRODUCTOS ENVIO'
 			FROM inserted
 	end
 go
@@ -256,17 +256,17 @@ as
 		from inserted
 	end
 go
-exec insertar_productos '','prueba','9'
+
 use acnur 
 go
-create trigger tr_eliminar_envio
+create trigger tr_eliminar_producto
 on productos
 for delete
 as
 	begin
 		SET NOCOUNT ON; 
 		insert into seguridad_productos(idProducto,descripcion,tipoEnv_fk,Fecha,Usuario,Detalle)
-		select idProducto,descripcion,tipoEnv_fk,GETDATE(),SYSTEM_USER,'SE INSERTO UN DATO EN LA TABLA PRODUCTO'
+		select idProducto,descripcion,tipoEnv_fk,GETDATE(),SYSTEM_USER,'SE ELIMINO UN DATO EN LA TABLA PRODUCTO'
 		from deleted
 	end
 go
@@ -489,7 +489,7 @@ as
 			insert into seguridad_socios(socio_id,nombre,apellido1,apellido2,direccion,fecha_pago,cuanta_bancaria,
 									tipo_cuota_fk,sede_fk,Fecha,Usuario,Detalle)
 			select socio_id,nombre,apellido1,apellido2,direccion,fecha_pago,cuanta_bancaria,
-									tipo_cuota_fk,sede_fk,GETDATE(),SYSTEM_USER,'DATO INGRESADO EN LA TABLA SOCIOS'
+									tipo_cuota_fk,sede_fk,GETDATE(),SYSTEM_USER,'DATO EDITADO EN LA TABLA SOCIOS'
 			from inserted
 	end
 go
@@ -629,7 +629,7 @@ as
 	begin
 		set nocount on;
 		insert into seguridad_voluntarios(voluntario_id,cedula,nombre,apellido1,apellido2,sede_fk,Fecha,Usuario,Detalle)
-		select voluntario_id,cedula,nombre,apellido1,apellido2,sede_fk,getdate(),SYSTEM_USER,'DATO INGRESADO EN LA TABLA DE VOLUNTARIOS'
+		select voluntario_id,cedula,nombre,apellido1,apellido2,sede_fk,getdate(),SYSTEM_USER,'DATO ELIMINADO EN LA TABLA DE VOLUNTARIOS'
 		from deleted
 	end
 go
@@ -696,7 +696,7 @@ as
 	begin
 		set nocount on;
 		insert into seguridad_voluntarios_Administrativos(voluntarioA_id,voluntario_fk,Fecha,Usuario,Detalle)
-		select voluntarioA_id,voluntario_fk,getdate(),SYSTEM_USER,'DATO INGRESADO EN LA TABLA DE VOLUNTARIOS ADMINISTRATIVOS'
+		select voluntarioA_id,voluntario_fk,getdate(),SYSTEM_USER,'DATO ELIMINADO EN LA TABLA DE VOLUNTARIOS ADMINISTRATIVOS'
 		from deleted
 	end
 go
@@ -710,7 +710,7 @@ create table seguridad_voluntarios_Humanitarios
 
 	voluntarioH_id int ,
 	profesion Varchar(25) not null,
-	disponibilidad bit not null,
+	disponibilidad varchar(50) not null,
 	cantidad_de_trabajos int not null,
 	voluntario_fk int not null,
 	Fecha			   DATE NOT NULL,
@@ -744,7 +744,7 @@ as
 	begin
 		SET NOCOUNT ON;
 		insert into  seguridad_voluntarios_Humanitarios(voluntarioH_id,profesion,disponibilidad,cantidad_de_trabajos,voluntario_fk,Fecha,Usuario,Detalle)
-		select voluntarioH_id,profesion,disponibilidad,cantidad_de_trabajos,voluntario_fk,getdate(),SYSTEM_USER,'DATO INGRESADO EN LA TABLA DE AGREGAR VOLUNTARIOS H'
+		select voluntarioH_id,profesion,disponibilidad,cantidad_de_trabajos,voluntario_fk,getdate(),SYSTEM_USER,'DATO ELIMINADO EN LA TABLA DE AGREGAR VOLUNTARIOS H'
 		from deleted
 	end
 go
