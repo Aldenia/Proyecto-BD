@@ -187,3 +187,14 @@ AS
 	Select * From voluntarios_Humanitarios
 
 GO
+
+USE ACNUR
+GO
+CREATE VIEW View_voluntario_Admin
+AS
+	Select 
+	voluntario_id,
+	nombre
+	From voluntarios
+
+GO

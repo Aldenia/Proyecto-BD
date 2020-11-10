@@ -217,3 +217,14 @@ Go
 EXEC SP_BuscarVoluntarios 'Juan'
 GO
 
+USE ACNUR
+GO
+CREATE VIEW View_sede_voluntario
+AS	
+	SELECT	
+		sede_id,
+		nombre_sede
+	From sedes
+GO
+
+select * from View_sede_voluntario
