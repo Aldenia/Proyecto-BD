@@ -59,3 +59,9 @@ Create Procedure eliminar_sede @sede_id int
 		Delete From sedes
 		Where sede_id = @sede_id
 	Go
+
+--Stored Procedure para listar las sedes
+Create Procedure SP_listar_sedes
+	As
+		select * from sedes;
+	Go

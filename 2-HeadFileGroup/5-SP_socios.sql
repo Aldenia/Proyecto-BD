@@ -1,16 +1,17 @@
 Use ACNUR
 Go
 
---Insertar en tabla socios
+--Insertar en tabla 
 Create Procedure insertar_socio @nombre Varchar(25), @apellido1 Varchar(25), @apellido2 Varchar(25), 
 								@direccion Varchar(200), @fecha_pago Date, @cuanta_bancaria Varchar(20),
 								@tipo_cuota_fk Int, @sede_fk Int
 As
+	SET DATEFORMAT dmy;
 	Insert Into socios (nombre, apellido1, apellido2, direccion, fecha_pago, cuanta_bancaria, tipo_cuota_fk, sede_fk)
 	Values (@nombre, @apellido1, @apellido2, @direccion, @fecha_pago, @cuanta_bancaria, @tipo_cuota_fk,@sede_fk)
 Go
 
-Execute insertar_socio 'Carlos Antonio', 'Rodríguez', 'Herrera', 'Liberia, Guanacaste, 300m norte de la escuela', '2020-10-20', '200-02-179-005140-9','3','3'
+Execute insertar_socio 'Antonio', 'Herrera', 'Herrera', 'Hojancha, Guanacaste, 300m norte de la escuela', '2020-10-20', '200-02-179-005140-9','3','3'
 Go
 
 --listar los socios existentes
@@ -91,4 +92,28 @@ As
 	tipo_cuota_fk = @tipo_cuota_fk, 
 	sede_fk = @sede_fk
 	Where socio_id =  @socio_id
+Go
+
+--busca los socio por id
+Create Procedure socio_por_id @socio_id int
+
+As
+	Select 
+		sedes.sede_id,
+		sedes.nombre_sede,
+		socios.socio_id, 
+		socios.nombre, 
+		socios.apellido1, 
+		socios.apellido2, 
+		socios.direccion, 
+		cuotas.cuota_id, 
+		cuotas.tipo, 
+		cuotas.cantidad, 
+		socios.cuanta_bancaria, 
+		socios.fecha_pago  
+	from socios
+		Inner Join sedes On sedes.sede_id = socios.sede_fk
+		Inner Join tipo_cuotas cuotas On cuotas.cuota_id = socios.tipo_cuota_fk
+	where socios.socio_id =  @socio_id
+
 Go
